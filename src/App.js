@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import useFetchJobs from './Components/useFetchJobs'
 import Job from './Components/Job'
 import JobPagination from './Components/JobPagination'
+import Spinner from './Components/Spinner'
 import Search from './Components/Search'
 import { Container } from 'react-bootstrap'
 
@@ -24,7 +25,7 @@ function App() {
       <Search params={params} onParamChange={handleParamChange} />
       <h1 className="mb-4">GitHub Jobs</h1>
       <JobPagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
-      {loading && <h1>Loading...</h1>}
+      {loading && <Spinner />}
       {error && <h1>Error. Try Refreshing.</h1>}
       {jobs.map(job => {
         return <Job key={job.id} job={job} />
